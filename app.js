@@ -48,20 +48,20 @@ app.post('/pricing', async (req, res) => {
 
 const totalPrice = calculateTotalPrice(req.body);
 
-try {
-    // Insert data into the database
-    const insertQuery = `
-      INSERT INTO pricings (zone, organization_id, total_price,base_distance_in_km,km_price,fix_price)
-      VALUES ($1, $2, $3,$4,$5,$6)
-    `;
-    const values = [zone, organization_id, totalPrice,5,1.5,10];
-    await pool.query(insertQuery, values);
+// try {
+//     // Insert data into the database
+//     const insertQuery = `
+//       INSERT INTO pricings (zone, organization_id, total_price,base_distance_in_km,km_price,fix_price)
+//       VALUES ($1, $2, $3,$4,$5,$6)
+//     `;
+//     const values = [zone, organization_id, totalPrice,5,1.5,10];
+//     await pool.query(insertQuery, values);
 
     res.json({ total_price: totalPrice });
-  } catch (error) {
-    console.error('Error inserting data:', error);
-    res.status(500).json({ error: 'An error occurred while saving the data' });
-  }
+//   } catch (error) {
+//     console.error('Error inserting data:', error);
+//     res.status(500).json({ error: 'An error occurred while saving the data' });
+//   }
 });
     
  
